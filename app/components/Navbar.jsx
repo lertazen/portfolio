@@ -27,15 +27,15 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className='border-2 border-green-300 h-20 flex px-6 lg:px-20 items-center justify-between mx-auto py-5 absolute right-0 top-0 left-0 z-50 flex-wrap'>
+    <nav className='h-20 flex px-6 lg:px-20 items-center justify-between mx-auto py-5 absolute right-0 top-0 left-0 z-50 flex-wrap'>
       <Link href='/' className='inline-block mr-6 z-50 absolute'>
         <Image src='/horse-icon.png' alt='logo' width={50} height={50} />
       </Link>
 
       <div
-        className={`${
-          isMenuOpen ? 'show' : ''
-        } nav_links basis-auto items-center flex-grow mt-10 lg:mt-0 lg:justify-end lg:flex lg:flex-row lg:h-full`}
+        className={
+          'hidden basis-auto items-center flex-grow mt-10 lg:mt-0 lg:justify-end lg:flex lg:flex-row lg:h-full'
+        }
       >
         <ul className='h-52 w-full flex flex-col gap-6 items-center justify-center lg:flex lg:flex-row lg:w-auto'>
           {NAV_LINKS.map((link) => (
@@ -64,6 +64,24 @@ const Navbar = () => {
           className='inline-block cursor-pointer'
         />
       </button>
+
+      <div
+        className={`${
+          isMenuOpen ? 'show' : ''
+        } nav_links lg:hidden basis-auto items-center flex-grow mt-10`}
+      >
+        <ul className='h-52 w-full flex flex-col gap-6 items-center justify-center lg:flex lg:flex-row lg:w-auto'>
+          {NAV_LINKS.map((link) => (
+            <Link
+              href={link.href}
+              key={link.key}
+              className='w-full text-[16px] font-[400] flex items-center justify-center cursor-pointer transition-all hover:font-bold lg:text-[22px]'
+            >
+              {link.label}
+            </Link>
+          ))}
+        </ul>
+      </div>
     </nav>
   );
 };
