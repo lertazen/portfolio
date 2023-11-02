@@ -162,3 +162,43 @@ body {
     height: 920px;
   }
 }
+
+.projects_bg {
+  background: hsl(224, 32%, 12%);
+  background-image: conic-gradient(
+    from 0deg at 50% 50%,
+    black 60deg,
+    darkblue,
+    darkblue,
+    black 300deg
+  );
+  background-blend-mode: multiply;
+  min-height: max-content;
+}
+
+.tilt_card {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(5000px);
+}
+
+.tilt_card::after,
+.tilt_card::before {
+  content: '';
+  position: absolute;
+  border-radius: inherit;
+}
+
+.tilt_card::after {
+  inset: -0.8rem;
+  background: linear-gradient(45deg, purple, darkblue);
+  transform: translateZ(-50px);
+}
+
+.tilt_card::before {
+  inset: 0rem;
+  background: black;
+  transform: translateZ(-49px);
+  filter: blur(15px);
+  opacity: 0.5;
+}

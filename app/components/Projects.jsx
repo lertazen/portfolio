@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import ProjectCard from './ProjectCard';
 
 const Projects = () => {
   const [isDetailOpen, setIsDetailOpen] = useState(false);
@@ -17,19 +18,7 @@ const Projects = () => {
         <div className='mb-4 lg:pl-2 col-span-4 lg:col-span-4 text-md'>
           Tibetan Accessory E-commerce
         </div>
-        <div className='text-md lg:row-span-3 col-span-6'>
-          <Link
-            href='https://yangjintibetangarden.onrender.com/'
-            target='_blank'
-          >
-            <Image
-              src='/e-commerce-yangjin.png'
-              width={500}
-              height={300}
-              alt='Screenshot of the project home page'
-            />
-          </Link>
-        </div>
+        <ProjectCard />
         <div className='col-span-4 lg:row-span-2 lg:col-span-2 text-md font-bold'>
           Overview:
         </div>

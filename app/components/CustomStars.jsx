@@ -7,7 +7,7 @@ const CustomStar = React.forwardRef((props, ref) => {
     <Sphere ref={ref} {...props} args={[0.002, 20, 20]}>
       <meshStandardMaterial
         toneMapped={false}
-        emissive='#7232a6'
+        emissive='#3E92CC'
         emissiveIntensity={4}
       />
     </Sphere>
