@@ -17,21 +17,21 @@ const AnimatedBg = () => {
   useFrame((state, delta) => {
     const t = state.clock.getElapsedTime();
 
-    const xValue = (2 * Math.cos(t / 2)) / (Math.sin(t / 2) ** 2 + 1);
-    const yValue =
-      (2 * Math.cos(t / 2) * Math.sin(t / 2)) / (Math.sin(t / 2) ** 2 + 1);
+    const a = 2.5;
+    const b = 1.5;
 
-    updatePosition(groupOne, 'x', xValue);
-    updatePosition(groupOne, 'y', yValue + 1);
-    updatePosition(groupOne, 'z', xValue);
+    // Calculate the ellipse positions for each group
+    const ellipseX = a * Math.cos(t / 4);
+    const ellipseZ = b * Math.sin(t / 4);
 
-    updatePosition(groupTwo, 'y', xValue);
-    updatePosition(groupTwo, 'z', yValue);
-    updatePosition(groupTwo, 'z', xValue - 1);
+    updatePosition(groupOne, 'x', ellipseX);
+    updatePosition(groupOne, 'y', ellipseZ);
 
-    updatePosition(groupThree, 'x', xValue);
-    updatePosition(groupThree, 'y', xValue - 1);
-    updatePosition(groupThree, 'z', yValue);
+    updatePosition(groupTwo, 'y', ellipseX);
+    updatePosition(groupTwo, 'x', ellipseZ);
+
+    updatePosition(groupThree, 'x', -0.5 * ellipseX);
+    updatePosition(groupThree, 'y', ellipseZ);
   });
 
   const texture1 = useTexture('/texture1.jpg');
@@ -51,17 +51,17 @@ const AnimatedBg = () => {
   return (
     <group>
       <group ref={groupOne} position={[2, 0, 2]}>
-        <Sphere ref={sphereOne} args={[0.5, 40, 40]} position={[0, 0, 0]}>
+        <Sphere ref={sphereOne} args={[0.4, 40, 40]} position={[0, 0, 0]}>
           <meshPhysicalMaterial map={texture1} />
         </Sphere>
       </group>
       <group ref={groupTwo} position={[0, -2, -2]}>
-        <Sphere ref={sphereTwo} args={[0.5, 40, 40]} position={[0, 0, 0]}>
+        <Sphere ref={sphereTwo} args={[0.4, 40, 40]} position={[0, 0, 0]}>
           <meshPhysicalMaterial map={texture2} />
         </Sphere>
       </group>
-      <group ref={groupThree} position={[2, 2, 0]}>
-        <Sphere ref={sphereThree} args={[0.5, 40, 40]} position={[0, 0, 0]}>
+      <group ref={groupThree} position={[0, 0, 0]}>
+        <Sphere ref={sphereThree} args={[0.3, 40, 40]} position={[0, 0, 0]}>
           <meshPhysicalMaterial map={texture3} />
         </Sphere>
       </group>

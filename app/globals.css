@@ -47,6 +47,15 @@ body {
   }
 }
 
+.canvas_bg {
+  background-image: radial-gradient(
+    circle,
+    rgba(7, 8, 77, 1) 0%,
+    rgba(2, 0, 36, 1) 39%,
+    rgba(28, 7, 84, 1) 95%
+  );
+}
+
 #hero_intro {
   opacity: 0;
   transform: translateX(-2rem);
@@ -122,59 +131,60 @@ body {
 }
 
 .detail_collapsed {
-  height: 0;
+  transform: translateY(-30%);
   visibility: hidden;
-  transition: height 0.3s ease-in-out, visibility 0.1s ease-in-out 0.2s;
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, visibility 0.1s ease-in-out 0.2s,
+    opacity 0.1s ease-out;
 }
 
 .detail_show {
-  height: 500px;
+  transform: translateY(0);
   visibility: visible;
-  transition: height 0.3s ease-in-out, visibility 0.05s ease-in-out;
+  opacity: 1;
+  transition: transform 0.3s ease-in-out, visibility 0.05s ease-in-out,
+    opacity 0.2s ease-in 0.1s;
 }
 
-@media (max-width: 1535px) {
-  .detail_show {
-    height: 560px;
+/* @media (max-width: 1535px) {
+  .detail_collapsed {
+    transform: translateY(-30%);
   }
 }
 
 @media (max-width: 1279px) {
-  .detail_show {
-    height: 640px;
+  .detail_collapsed {
+    transform: translateY(-40%);
   }
 }
 
 @media (max-width: 1023px) {
-  .detail_show {
-    height: 670px;
+  .detail_collapsed {
+    transform: translateY(-50%);
   }
 }
 
 @media (max-width: 767px) {
-  .detail_show {
-    height: 730px;
+  .detail_collapsed {
+    transform: translateY(-60%);
   }
 }
 
 @media (max-width: 639px) {
-  .detail_show {
-    height: 920px;
+  .detail_collapsed {
+    transform: translateY(-70%);
   }
-}
+} */
 
-.projects_bg {
-  background: hsl(224, 32%, 12%);
-  background-image: conic-gradient(
-    from 0deg at 50% 50%,
-    black 60deg,
-    darkblue,
-    darkblue,
-    black 300deg
+/* .projects_bg {
+  background: hsl(224, 32%, 13%);
+  background-image: linear-gradient(
+    0deg,
+    rgba(62, 19, 107, 1) 0%,
+    rgba(19, 13, 65, 1) 100%
   );
   background-blend-mode: multiply;
-  min-height: max-content;
-}
+} */
 
 .tilt_card {
   position: relative;
@@ -191,7 +201,7 @@ body {
 
 .tilt_card::after {
   inset: -0.8rem;
-  background: linear-gradient(45deg, purple, darkblue);
+  background: linear-gradient(45deg, rgb(159 18 57), rgb(38, 96, 164));
   transform: translateZ(-50px);
 }
 
@@ -202,3 +212,15 @@ body {
   filter: blur(15px);
   opacity: 0.5;
 }
+
+/* .about_bg {
+  background: hsl(224, 32%, 13%);
+  background-image: conic-gradient(
+    from 0deg at 50% 50%,
+    rgb(159 18 57) 60deg,
+    rgb(30 30 36),
+    rgb(30 30 36),
+    rgb(159 18 57) 300deg
+  );
+  background-blend-mode: multiply;
+} */
