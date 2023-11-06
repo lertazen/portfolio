@@ -73,6 +73,7 @@ const Navbar = () => {
         <ul className='h-52 w-full flex flex-col gap-6 items-center justify-center lg:flex lg:flex-row lg:w-auto'>
           {NAV_LINKS.map((link) => (
             <Link
+              onClick={() => setIsMenuOpen(false)}
               href={link.href}
               key={link.key}
               className='w-full text-[16px] font-[400] flex items-center justify-center cursor-pointer transition-all hover:font-bold lg:text-[22px]'

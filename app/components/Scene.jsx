@@ -1,6 +1,6 @@
 'use client';
 import { Suspense, useEffect, useRef } from 'react';
-import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import { PerspectiveCamera } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import AnimatedBg from './AnimatedBg';
 import Light from './Light';
@@ -12,7 +12,7 @@ const Scene = () => {
   const onScroll = () => {
     const scrollTop = document.body.getBoundingClientRect().top;
     console.log(scrollTop);
-    camera.current.position.z = 9 + scrollTop * -0.001;
+    camera.current.position.z = 9 + scrollTop * -0.002;
   };
 
   useEffect(() => {
@@ -27,13 +27,7 @@ const Scene = () => {
       <AnimatedBg />
       {/* <gridHelper /> */}
       <PerspectiveCamera ref={camera} makeDefault position={[0, 0, 9]} />
-      {/* <OrbitControls
-        enableRotate={false}
-        enableZoom={false}
-        enablePan={false}
-        maxPolarAngle={Math.PI / 2}
-        minPolarAngle={Math.PI / 2}
-      /> */}
+
       <CustomStars />
       <Suspense fallback={null}>
         <EffectComposer>
