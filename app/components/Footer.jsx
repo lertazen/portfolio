@@ -8,7 +8,11 @@ const Footer = () => {
       id='contact'
       className='container mx-auto h-60 md:h-72 px-2 absolute right-0 left-0'
     >
-      <div className='mt-10 flex justify-center items-center gap-2 md:gap-3'>
+      <div className='md:text-lg'>Nathan Liao | Full-Stack Developer</div>
+      <div className='md:text-lg'>
+        <Link href='mailto:tizliao2@gmail.com'>Email: tizliao2@gmail.com</Link>
+      </div>
+      <div className='pt-3 flex gap-2 md:gap-3'>
         <Link href='https://github.com/lertazen' target='_blank'>
           <Image
             src='/github-icon.png'

@@ -21,7 +21,7 @@ const Hero = () => {
         </h1>
         <h5 className='text-2xl z-40'>I am a full-stack developer.</h5>
       </div>
-      <div className=' fixed right-0 top-0 bottom-[-50px] w-full canvas_bg'>
+      <div className='fixed right-0 top-0 bottom-[-50px] w-full canvas_bg'>
         <Canvas>
           <Scene />
         </Canvas>

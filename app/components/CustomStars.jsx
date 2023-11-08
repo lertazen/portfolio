@@ -26,7 +26,7 @@ const CustomStars = () => {
       star.position.z += star.velocity.z;
 
       // Reset star position
-      if (star.position.length() > 8.5) {
+      if (star.position.length() > 12) {
         star.position.set(
           5 * (Math.random() - 0.5),
           5 * (Math.random() - 0.5),
@@ -62,8 +62,8 @@ const CustomStars = () => {
             key={i}
             ref={starRef}
             position={[
-              (Math.random() - 0.5) * 10,
-              (Math.random() - 0.5) * 10,
+              (Math.random() - 0.5) * 20,
+              (Math.random() - 0.5) * 20,
               Math.random() * 3,
             ]}
           />

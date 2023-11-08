@@ -1,5 +1,5 @@
 'use client';
-import { Suspense, useEffect, useRef } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { PerspectiveCamera } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import AnimatedBg from './AnimatedBg';
@@ -8,16 +8,38 @@ import CustomStars from './CustomStars';
 
 const Scene = () => {
   const camera = useRef();
+  const [positionZ, setPositionZ] = useState(9);
+  const zRef = useRef(positionZ);
+
+  useEffect(() => {
+    zRef.current = positionZ;
+  }, [positionZ]);
 
   const onScroll = () => {
     const scrollTop = document.body.getBoundingClientRect().top;
-    console.log(scrollTop);
-    camera.current.position.z = 9 + scrollTop * -0.002;
+    camera.current.position.z = zRef.current + scrollTop * -0.002;
+  };
+
+  const changePositionZ = () => {
+    if (window.innerWidth <= 640) {
+      setPositionZ(18);
+    } else if (window.innerWidth <= 768) {
+      setPositionZ(15);
+    } else if (window.innerWidth <= 1024) {
+      setPositionZ(12);
+    } else {
+      setPositionZ(9);
+    }
   };
 
   useEffect(() => {
+    changePositionZ();
+    window.addEventListener('resize', changePositionZ);
     window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('resize', changePositionZ);
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
 
   return (
@@ -26,7 +48,11 @@ const Scene = () => {
       <Light />
       <AnimatedBg />
       {/* <gridHelper /> */}
-      <PerspectiveCamera ref={camera} makeDefault position={[0, 0, 9]} />
+      <PerspectiveCamera
+        ref={camera}
+        makeDefault
+        position={[0, 0, positionZ]}
+      />
 
       <CustomStars />
       <Suspense fallback={null}>
