@@ -27,7 +27,7 @@ const Projects = () => {
         opacity: opacityProgress,
       }}
       id='projects'
-      className='container mx-auto pt-10 min-h-screen'
+      className='container mx-auto pt-60 min-h-screen'
     >
       <div className='my-8 text-2xl mx-2'>Projects</div>
       <div className='w-full h-full flex justify-center items-center flex-col'>
