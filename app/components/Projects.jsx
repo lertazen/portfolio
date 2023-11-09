@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 
 const Projects = () => {
@@ -9,8 +10,25 @@ const Projects = () => {
     setIsDetailOpen(!isDetailOpen);
   };
 
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['0, 1', '0.6 1'],
+  });
+
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+
   return (
-    <div id='projects' className='container mx-auto pt-10 min-h-screen'>
+    <motion.div
+      ref={ref}
+      style={{
+        scale: scaleProgress,
+        opacity: opacityProgress,
+      }}
+      id='projects'
+      className='container mx-auto pt-10 min-h-screen'
+    >
       <div className='my-8 text-2xl mx-2'>Projects</div>
       <div className='w-full h-full flex justify-center items-center flex-col'>
         <div className='grid grid-cols-4 lg:grid-rows-3 lg:grid-cols-12 mx-2 gap-2'>
@@ -106,7 +124,7 @@ const Projects = () => {
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
