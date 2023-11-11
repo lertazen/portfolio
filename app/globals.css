@@ -200,3 +200,20 @@ body {
   filter: blur(15px);
   opacity: 0.5;
 }
+
+.tooltip {
+  display: none;
+}
+
+.tooltip:hover {
+  display: block;
+  border: 2px solid green;
+  position: absolute;
+  bottom: 0;
+  left: -20%;
+  right: -20%;
+  height: 50%;
+  transform: translateY(100%);
+  font-size: 15px;
+  text-align: center;
+}
