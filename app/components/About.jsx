@@ -32,7 +32,7 @@ const About = () => {
         </div>
         <div className='col-span-4 md:col-span-6'>
           <h3 className='text-xl'>Skills:</h3>
-          <div className='flex gap-3'>
+          <div className='flex items-center gap-3'>
             {ABOUT_BODY.skills.map((skill, index) => (
               <div className='relative'>
                 <Image

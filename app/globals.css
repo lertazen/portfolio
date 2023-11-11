@@ -203,17 +203,17 @@ body {
 
 .tooltip {
   display: none;
+  position: absolute;
 }
 
-.tooltip:hover {
+.skill_icon:hover + .tooltip {
   display: block;
-  border: 2px solid green;
   position: absolute;
   bottom: 0;
   left: -20%;
   right: -20%;
-  height: 50%;
-  transform: translateY(100%);
-  font-size: 15px;
+  height: 50px;
+  transform: translateY(120%);
+  font-size: 20px;
   text-align: center;
 }
