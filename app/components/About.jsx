@@ -26,17 +26,16 @@ const About = () => {
       <div className='container mx-auto px-2 grid grid-cols-4 md:grid-cols-12 gap-5'>
         <div className='col-span-4 md:col-span-6'>
           <div className='text-2xl'>About</div>
-          <div className='text-base md:text-xl p-1 md:p-0'>
+          <div className='text-base md:text-xl p-1 md:p-0 mt-2'>
             {ABOUT_BODY.body}
           </div>
         </div>
         <div className='col-span-4 md:col-span-6'>
           <h3 className='text-xl'>Skills:</h3>
-          <div className='flex items-center gap-3'>
+          <div className='flex items-center mt-3 gap-3 flex-wrap'>
             {ABOUT_BODY.skills.map((skill, index) => (
-              <div className='relative'>
+              <div key={index} className='relative shrink-0'>
                 <Image
-                  key={index}
                   src={skill.src}
                   width={45}
                   height={45}
@@ -44,9 +43,7 @@ const About = () => {
                   className='hover:scale-125 hover:show skill_icon'
                 />
 
-                <div key={index} className='tooltip'>
-                  {skill.name}
-                </div>
+                <div className='tooltip'>{skill.name}</div>
               </div>
             ))}
           </div>
